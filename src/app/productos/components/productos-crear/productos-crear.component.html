@@ -1,0 +1,57 @@
+<div class="h-box-title card mb-3">
+  <button class="btn btn-success btn-sm" (click)="showDialog(true)">Nuevo Producto</button>
+  <p-dialog [modal]="true" [(visible)]="visible" [style]="{width: '50vw'}">
+    <ng-template pTemplate="header">
+      <div class="inline-flex align-items-center justify-content-center">
+        <h2>Ingrese los datos del nuevo producto</h2>
+      </div>
+    </ng-template>
+    <hr class="mb-2">
+    <div class="container">
+      <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+        <div class="form-group mb-2">
+          <label class="form-label">ID de producto</label>
+          <input class="form-control" type="text" name="codProd" [(ngModel)]="producto.codProd">
+        </div>
+        <div class="form-group mb-2">
+          <label class="form-label">Nombre de Producto</label>
+          <input class="form-control" type="text" name="nomProd" [(ngModel)]="producto.nomProd">
+        </div>
+        <div class="form-group mb-2">
+          <label class="form-label">Descripción del producto</label>
+          <input class="form-control" type="text" name="descProd" [(ngModel)]="producto.descProd">
+        </div>
+        <div class="form-group mb-2">
+          <label class="form-label">Precio</label>
+          <div class="input-group">
+            <span class="input-group-text">S/</span>
+            <input class="form-control" type="number" name="precProd" [(ngModel)]="producto.precProd">
+          </div>
+        </div>
+        <div class="form-group mb-2">
+          <label class="form-label">Categoria</label>
+          <select class="form-select" name="rec_catProd.codCatProd" [(ngModel)]="producto.ref_catProd.codCatProd">
+            <option *ngFor="let cat of categorias" [value]="cat.codCatProd">{{ cat.descCatProd }}</option>
+          </select>
+        </div>
+        <div class="form-group mb-2">
+          <label class="form-label">Estado</label>
+          <select class="form-select"  name="ref_estProd.codEstProd" [(ngModel)]="producto.ref_estProd.codEstProd">
+            <option *ngFor="let est of estados" [value]="est.codEstProd">{{ est.descEstProd }}</option>
+          </select>
+        </div>
+        <div class="form-group mb-3">
+          <label class="form-label">Imagen</label>
+          <input class="form-control" type="file" #imageFile>
+        </div>
+        <hr>
+        <div class="form-group d-flex justify-content-between mt-4">
+          <a (click)="showDialog(false)" class="btn btn-danger">Cancelar</a>
+          <button type="submit" class="btn btn-success">Confirmar</button>
+        </div>
+      </form>
+    </div>
+  </p-dialog>
+</div>
+
+<p-toast [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'1000ms'" hideTransformOptions="'1000ms'" [showTransformOptions]="'translateX(100%)'"/>

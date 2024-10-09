@@ -1,0 +1,48 @@
+<div class="card">
+  <div class="card-body">
+    <p-table
+      #dt
+      dataKey="codProd"
+      [value]="productos"
+      styleClass="p-datatable-striped p-datatable-gridlines p-datatable-lg"
+      [paginator]="true"
+      [rows]="9"
+      [showCurrentPageReport]="true"
+      currentPageReportTemplate="Mostrando del {first} al {last} de {totalRecords} productos"
+      [tableStyle]="{ 'min-width': '60vw'}"
+      [scrollable]="true" scrollHeight="50vh"
+      >
+
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="codProd" class="text-center" style="width: 10%">Código<p-sortIcon field="codProd"></p-sortIcon></th>
+          <th pSortableColumn="nomProd" class="text-center" style="width: 12.5%">Nombre<p-sortIcon field="nomProd"></p-sortIcon></th>
+          <th class="text-center" style="width: 15%">Descripción</th>
+          <th pSortableColumn="precProd" class="text-center" style="width: 10%">Precio<p-sortIcon field="precProd"></p-sortIcon></th>
+          <th class="text-center" style="width: 10%">Imagen</th>
+          <th pSortableColumn="ref_catProd.descCatProd" class="text-center" style="width: 12.5%">Categoria<p-sortIcon field="ref_catProd.descCatProd"></p-sortIcon></th>
+          <th pSortableColumn="ref_estProd.descEstProd" class="text-center" style="width: 10%">Estado<p-sortIcon field="ref_estProd.descEstProd"></p-sortIcon></th>
+          <th class="text-center" style="width: 20%">Acciones</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-product>
+        <tr>
+          <td class="text-center">{{ product.codProd }}</td>
+          <td class="text-center">{{ product.nomProd }}</td>
+          <td class="text-center">{{ product.descProd }}</td>
+          <td class="text-center">{{ product.precProd | currency:'S/ '}}</td>
+          <td class="text-center"><img [src]="product.rutaImg" [alt]="'Img de: ' + product.nomProd" width="100" class="shadow bg-body-tertiary rounded"/></td>
+          <td class="text-center">{{ product.ref_catProd.descCatProd }}</td>
+          <td class="text-center"><p-tag [value]="product.ref_estProd.descEstProd" [severity]="getSeverity(product.ref_estProd.descEstProd)"></p-tag></td>
+          <td class="text-center">
+            <productos-editar [idProd]="product.codProd" [categorias]="categoriasProd" [estados]="estadosProd"></productos-editar>
+            <button (click)="confirm($event)" (click)="obtenerCodProd(product.codProd)" class="btn btn-danger btn-sm mx-2">Eliminar</button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+
+<p-toast [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'1000ms'" hideTransformOptions="'1000ms'" [showTransformOptions]="'translateX(100%)'"/>
+<p-confirmDialog />

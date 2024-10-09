@@ -1,0 +1,36 @@
+.pie-pagina{
+  width: 100%;
+  background-color: #43773c;
+  border-top: 3px solid #efaf49;
+}
+.grupo-1 .box{
+  text-align: center;
+  margin: 10px;
+}
+
+.grupo-1 .box h2{
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 20px;
+  text-align: center;
+}
+.grupo-1 .box p{
+  color: #efefef;
+  margin-bottom: 10px;
+  line-height: 25px;
+}
+.fa-brands{
+  transition: all 0.2s ease;
+}
+.grupo-2{
+  background-color: #43773c;
+  padding: 15px 10px;
+  text-align: center;
+  border-top: #efaf49 dashed 1.5px;
+  border-bottom: #efaf49 solid 3px;
+}
+.grupo-2 a{
+  margin-left: 10px;
+  margin-right: 10px;
+  color: white;
+}

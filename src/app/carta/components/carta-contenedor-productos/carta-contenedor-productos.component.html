@@ -1,0 +1,13 @@
+<section>
+  <div class="contenedor" *ngFor="let cat of categorias">
+    <h2 class="categoria-titulo">{{ cat.descCatProd }}</h2>
+    <div class="comida-contenedor">
+      <div *ngFor="let prod of getProductosByCategoria(cat.descCatProd)" class="info-comida">
+        <img [src]="prod.rutaImg" [alt]="prod.nomProd" class="food-img">
+        <h3 class="food-name nom-prod text-center">{{ prod.nomProd }}</h3>
+        <p class="desc-prod text-center text-break">{{ prod.descProd }}</p>
+        <p class="food-price prec-prod fw-bold">{{ prod.precProd | currency: 'S/ ' }}</p>
+      </div>
+    </div>
+  </div>
+</section>

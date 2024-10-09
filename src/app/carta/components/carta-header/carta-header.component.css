@@ -1,0 +1,14 @@
+nav{
+  background: #43773c;
+  border-bottom: 3px solid #efaf49;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+}
+.logo{
+  height: 4.5rem;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 0px;
+}

@@ -1,0 +1,17 @@
+<div class="container-fluid d-flex flex-column align-items-center justify-content-center">
+  <img src="../../../../assets/logo_sin_fondo.png" class="logo">
+  <div class="contenedor">
+    <form (ngSubmit)="onSubmit()">
+      <h1 class="titulo">Inicia Sesión!</h1>
+      <hr>
+      <span class="texto-span">Ingresa tus credenciales aquí abajo e ingresa al sistema!</span>
+      <input type="text" placeholder="Usuario" name="usuario" [(ngModel)]="loginUser.usuario"/>
+      <input type="password" placeholder="Contraseña" name="contrasena" [(ngModel)]="loginUser.contrasena"/>
+      <hr>
+      <button type="submit" class="boton">Ingresar</button>
+    </form>
+  </div>
+</div>
+
+<p-toast position="bottom-center" [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'500ms'" [hideTransformOptions]="'1000ms'" [showTransformOptions]="'translateY(100%)'"/>
+

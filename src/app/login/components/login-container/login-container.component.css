@@ -1,0 +1,75 @@
+.contenedor {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Montserrat', sans-serif !important;
+}
+.logo{
+	max-width: 25rem;
+}
+hr{
+	margin: 10px 0px;
+	width: 21rem;
+	height: 2px;
+
+	border-width: 0px;
+	border-color:#EFAF49;
+	background-color: #EFAF49;
+}
+.titulo {
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+.amarillo{
+	color:#EFAF49;
+}
+.texto-p {
+	font-size: 14px;
+	font-weight: 100;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+	margin: 20px 0 30px;
+}
+.texto-span {
+	font-size: 12px;
+}
+.input-group{
+	width: 50%;
+}
+.boton {
+	border-radius: 20px;
+	border: 1px solid #EFAF49;
+	background-color: #EFAF49;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+	margin-top: 10px;
+	&:focus {
+		outline: none;
+	}
+
+	&:active {
+		transform: scale(0.95);
+	}
+}
+form {
+	background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 35px;
+  text-align: center;
+  border-radius: 10px;
+}
+input {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+}

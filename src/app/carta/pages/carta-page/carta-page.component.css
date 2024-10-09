@@ -1,0 +1,57 @@
+/*main*/
+main{
+  background-color: #F6F6F6;
+  padding: 40px 50px 40px 50px;
+}
+.principal{
+  text-align: center;
+  width: 70%;
+}
+h1{
+  color: #efaf49;
+  margin-bottom: 40px;
+  font-size: 38px;
+}
+.menu-carta{
+  position: sticky;
+  top: 0;
+  background-color: #43773c;
+  border-bottom: 3px solid #efaf49;
+  display: flex;
+  justify-content: space-evenly;
+
+}
+.menu-carta a{
+  display: inline-block;
+  color: #ffff;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px 0;
+  transition: color 0.2s linear 0s;
+}
+.menu-carta>a:hover{
+  color: #efaf49;
+}
+
+@media (max-width: 550px){
+  .menu-carta{
+    position: sticky;
+    top: 0;
+    background-color: #43773c;
+    border-bottom: 3px solid #efaf49;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    column-gap: 48px;
+  }
+  .menu-carta a{
+    text-align: center;
+    color: #ffff;
+    font-size: 18px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}

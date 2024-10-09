@@ -1,0 +1,11 @@
+.div-centrado {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.fondo{
+  background: linear-gradient(to right, #43773C, #56B34A);
+}
+

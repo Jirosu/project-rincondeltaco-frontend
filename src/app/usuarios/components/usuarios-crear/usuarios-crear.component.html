@@ -1,0 +1,46 @@
+<div class="h-box-title card mb-3">
+  <button class="btn btn-success btn-sm" (click)="showDialog(true)">Nuevo usuario</button>
+  <p-dialog [modal]="true" [(visible)]="visible" [style]="{width: '50vw'}">
+    <ng-template pTemplate="header">
+      <div class="inline-flex align-items-center justify-content-center">
+        <h2>Ingrese los datos del nuevo usuario</h2>
+      </div>
+    </ng-template>
+    <hr class="mb-2">
+    <div class="container">
+      <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+        <div class="form-group mb-2">
+          <label class="form-label">ID</label>
+          <input class="form-control" type="text" name="codUsu" [(ngModel)]="usuario.codUsu">
+        </div>
+        <div class="form-group mb-2">
+          <label class="form-label">Nombres</label>
+          <input class="form-control" type="text" name="nomUsu" [(ngModel)]="usuario.nomUsu">
+        </div>
+        <div class="form-group mb-2">
+          <label class="form-label">Apellidos</label>
+          <input class="form-control" type="text" name="apeUsu" [(ngModel)]="usuario.apeUsu">
+        </div>
+        <div class="form-group mb-2">
+          <label class="form-label">Usuario</label>
+          <input class="form-control" type="text" name="usuario" [(ngModel)]="usuario.usuario">
+        </div>
+        <div class="form-group mb-2">
+          <label class="form-label">Contraseña</label>
+          <input class="form-control" type="password" name="contrasena" [(ngModel)]="usuario.contrasena">
+        </div>
+        <div class="form-group mb-2">
+          <label class="form-label">Rol</label>
+          <input class="form-control" type="text" name="rolUsu" [(ngModel)]="usuario.rolUsu">
+        </div>
+        <hr>
+        <div class="form-group d-flex justify-content-between mt-4">
+          <a (click)="showDialog(false)" class="btn btn-danger">Cancelar</a>
+          <button type="submit" class="btn btn-success">Confirmar</button>
+        </div>
+      </form>
+    </div>
+  </p-dialog>
+</div>
+
+<p-toast [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'1000ms'" hideTransformOptions="'1000ms'" [showTransformOptions]="'translateX(100%)'"/>

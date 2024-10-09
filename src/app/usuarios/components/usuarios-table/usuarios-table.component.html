@@ -1,0 +1,44 @@
+<div class="card">
+  <div class="card-body">
+    <p-table
+      #dt
+      dataKey="codUsu"
+      [value]="usuarios"
+      styleClass="p-datatable-striped p-datatable-gridlines p-datatable-lg"
+      [paginator]="true"
+      [rows]="9"
+      [showCurrentPageReport]="true"
+      currentPageReportTemplate="Mostrando del {first} al {last} de {totalRecords} usuarioos"
+      [tableStyle]="{ 'min-width': '60vw'}"
+      [scrollable]="true" scrollHeight="50vh"
+      >
+
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="codUsu" class="text-center" style="width: 10%">Código<p-sortIcon field="codUsu"></p-sortIcon></th>
+          <th pSortableColumn="nomUsu" class="text-center" style="width: 12.5%">Nombre<p-sortIcon field="nomUsu"></p-sortIcon></th>
+          <th class="text-center" style="width: 15%">Apellidos</th>
+          <th pSortableColumn="precUsu" class="text-center" style="width: 10%">Usuario<p-sortIcon field="precUsu"></p-sortIcon></th>
+          <th class="text-center" style="width: 10%">Rol</th>
+          <th class="text-center" style="width: 20%">Acciones</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-usuario>
+        <tr>
+          <td class="text-center">{{ usuario.codUsu }}</td>
+          <td class="text-center">{{ usuario.nomUsu }}</td>
+          <td class="text-center">{{ usuario.apeUsu }}</td>
+          <td class="text-center">{{ usuario.usuario }}</td>
+          <td class="text-center">{{ usuario.rolUsu }}</td>
+          <td class="text-center">
+            <usuarios-editar [idUsu]="usuario.codUsu"></usuarios-editar>
+            <button (click)="confirm($event)" (click)="obtenerCodUsu(usuario.codUsu)" class="btn btn-danger btn-sm mx-2">Eliminar</button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+
+<p-toast [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'1000ms'" hideTransformOptions="'1000ms'" [showTransformOptions]="'translateX(100%)'"/>
+<p-confirmDialog />
