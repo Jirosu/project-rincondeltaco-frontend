@@ -25,6 +25,11 @@ export class UsuariosCrearComponent {
     rolUsu: ''
   };
 
+  roles: string[] = [
+    'Administrador', 'Usuario'
+  ];
+
+
   visible: boolean = false;
 
   constructor(private _usuService: UsuariosService, private _sharedService: SharedService, private messageService: MessageService) {}

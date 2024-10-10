@@ -32,6 +32,10 @@ export class UsuariosEditarComponent {
     rolUsu: ''
   };
 
+  roles: string[] = [
+    'Administrador', 'Usuario'
+  ];
+
   constructor(private _usuService: UsuariosService, private messageService: MessageService, private _sharedService: SharedService ) {}
 
   obtenerProd(){

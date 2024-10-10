@@ -19,7 +19,7 @@
         </div>
         <div class="form-group mb-2">
           <label class="form-label">Email</label>
-          <input class="form-control" type="text" name="usuario" [(ngModel)]="usuario.email">
+          <input class="form-control" type="email" name="usuario" [(ngModel)]="usuario.email">
         </div>
         <div class="form-group mb-2">
           <label class="form-label">Contraseña</label>
@@ -27,7 +27,12 @@
         </div>
         <div class="form-group mb-2">
           <label class="form-label">Rol</label>
-          <input class="form-control" type="text" name="rolUsu" [(ngModel)]="usuario.rolUsu">
+          <p-dropdown
+            [options]="roles"
+            [(ngModel)]="usuario.rolUsu"
+            name="rolUsu"
+            placeholder="Seleccione el rol"
+            styleClass = "w-full" />
         </div>
         <hr>
         <div class="form-group d-flex justify-content-between mt-4">
