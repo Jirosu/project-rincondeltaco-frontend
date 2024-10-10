@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit{
   cerrarSesion() {
     sessionStorage.removeItem('valor');
     sessionStorage.removeItem('nombre');
+    sessionStorage.removeItem('rol');
 
     console.log('Sesión cerrada');
     this.valor = false;

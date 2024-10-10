@@ -18,7 +18,7 @@
           <th pSortableColumn="codUsu" class="text-center" style="width: 10%">Código<p-sortIcon field="codUsu"></p-sortIcon></th>
           <th pSortableColumn="nomUsu" class="text-center" style="width: 12.5%">Nombre<p-sortIcon field="nomUsu"></p-sortIcon></th>
           <th class="text-center" style="width: 15%">Apellidos</th>
-          <th pSortableColumn="precUsu" class="text-center" style="width: 10%">Usuario<p-sortIcon field="precUsu"></p-sortIcon></th>
+          <th pSortableColumn="precUsu" class="text-center" style="width: 10%">Email<p-sortIcon field="precUsu"></p-sortIcon></th>
           <th class="text-center" style="width: 10%">Rol</th>
           <th class="text-center" style="width: 20%">Acciones</th>
         </tr>
@@ -28,7 +28,7 @@
           <td class="text-center">{{ usuario.codUsu }}</td>
           <td class="text-center">{{ usuario.nomUsu }}</td>
           <td class="text-center">{{ usuario.apeUsu }}</td>
-          <td class="text-center">{{ usuario.usuario }}</td>
+          <td class="text-center">{{ usuario.email }}</td>
           <td class="text-center">{{ usuario.rolUsu }}</td>
           <td class="text-center">
             <usuarios-editar [idUsu]="usuario.codUsu"></usuarios-editar>

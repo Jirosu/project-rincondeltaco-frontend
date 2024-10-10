@@ -25,7 +25,8 @@ const routes: Routes = [
     path: 'productos',
     component: ProductosPageComponent,
     loadChildren: () => import('./productos/productos.module').then(m => m.ProductosModule)
-  }
+  },
+  { path: '**', redirectTo: '/carta', pathMatch: 'full' }
 ];
 
 @NgModule({

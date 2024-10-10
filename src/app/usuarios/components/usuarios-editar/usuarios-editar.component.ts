@@ -27,7 +27,7 @@ export class UsuariosEditarComponent {
     codUsu: '',
     nomUsu: '',
     apeUsu: '',
-    usuario: '',
+    email: '',
     contrasena: '',
     rolUsu: ''
   };

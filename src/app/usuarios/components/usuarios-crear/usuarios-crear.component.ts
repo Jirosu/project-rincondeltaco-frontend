@@ -20,7 +20,7 @@ export class UsuariosCrearComponent {
     codUsu: '',
     nomUsu: '',
     apeUsu: '',
-    usuario: '',
+    email: '',
     contrasena: '',
     rolUsu: ''
   };
@@ -50,7 +50,7 @@ export class UsuariosCrearComponent {
       codUsu: '',
       nomUsu: '',
       apeUsu: '',
-      usuario: '',
+      email: '',
       contrasena: '',
       rolUsu: ''
     }

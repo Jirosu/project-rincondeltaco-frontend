@@ -16,13 +16,13 @@ export class LoginContainerComponent {
     codUsu: '',
     nomUsu: '',
     apeUsu: '',
-    usuario: '',
+    email: '',
     contrasena: '',
     rolUsu: ''
   };
 
   public loginUser: Login = {
-    usuario: '',
+    email: '',
     contrasena: ''
   };
 
@@ -31,26 +31,36 @@ export class LoginContainerComponent {
     msg: ''
   }
 
-  constructor(private _usuService: UsuariosService, private _loginService: LoginService, private _router: Router, private messageService: MessageService) { }
+  constructor(private _loginService: LoginService, private _router: Router, private messageService: MessageService) { }
 
   onSubmit() {
-    console.log(this.loginUser);
+    this.usuarioEnc.email = this.loginUser.email;
+    this.usuarioEnc.contrasena = this.loginUser.contrasena;
 
-    this._usuService.getUsuarios().subscribe((resp) => {
-      let usuarios = resp;
-      for (let i = 0; i < usuarios.length; i++) {
-        if (usuarios[i].usuario == this.loginUser.usuario && usuarios[i].contrasena == this.loginUser.contrasena) {
-          this.usuarioEnc = usuarios[i];
-          sessionStorage.setItem('nombre', this.usuarioEnc.nomUsu);
-          sessionStorage.setItem('valor', 'true');
-          console.log(this.usuarioEnc);
-          this.showSuccess();
-          setTimeout(() => {
-            this._router.navigate(['/productos']);
-          }, 2000);
-          break;
+    let formData = new FormData();
+    formData.append('data', JSON.stringify(this.usuarioEnc));
+
+    this._loginService.loginUsuarios(formData).subscribe({
+      next: (response) => {
+        if (!response.valor) {
+          this.showError();
+          return;
         }
-        this.showError();
+        sessionStorage.setItem('nombre', response.name!);
+        sessionStorage.setItem('rol', response.rol!);
+        sessionStorage.setItem('valor', 'true');
+
+        this.showSuccess(response.name!);
+        setTimeout(() => {
+          this._router.navigate(['/productos']);
+        }, 2000);
+      },
+      error: (err) => {
+        if (err.status === 401) { // 401 Unauthorized
+          this.showError();
+        } else {
+          console.error('Error no esperado:', err);
+        }
       }
     });
   }
@@ -59,7 +69,7 @@ export class LoginContainerComponent {
     this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Credenciales Incorrectas.' });
   }
 
-  showSuccess(){
-    this.messageService.add({ severity: 'success', summary: 'Credenciales Correctas!', detail: `Bienvenido ${this.usuarioEnc.nomUsu} ${this.usuarioEnc.apeUsu}!` });
+  showSuccess(usuNom: string){
+    this.messageService.add({ severity: 'success', summary: 'Credenciales Correctas!', detail: `Bienvenido ${usuNom}!` });
   }
 }

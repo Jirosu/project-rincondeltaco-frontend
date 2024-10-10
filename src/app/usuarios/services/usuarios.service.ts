@@ -7,7 +7,7 @@ import { ResponseUsuario } from '../interface/response-usuario.interface';
   providedIn: 'root'
 })
 export class UsuariosService {
-  private readonly _apiUrl = 'http://localhost:8088';
+  private readonly _apiUrl = 'http://localhost:8083';
 
   constructor(private _http: HttpClient) { }
 
