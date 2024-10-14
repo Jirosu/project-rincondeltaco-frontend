@@ -33,9 +33,10 @@
           <td class="text-center">{{ product.precProd | currency:'S/ '}}</td>
           <td class="text-center"><img [src]="product.rutaImg" [alt]="'Img de: ' + product.nomProd" width="100" class="shadow bg-body-tertiary rounded"/></td>
           <td class="text-center">{{ product.ref_catProd.descCatProd }}</td>
-          <td class="text-center"><p-tag [value]="product.ref_estProd.descEstProd" [severity]="getSeverity(product.ref_estProd.descEstProd)"></p-tag></td>
+          <td class="text-center"><p-tag [value]="product.enabled ? 'Habilitado' : 'Deshabilitado'" [severity]="getSeverity(product.enabled)"></p-tag></td>
           <td class="text-center">
-            <productos-editar [idProd]="product.codProd" [categorias]="categoriasProd" [estados]="estadosProd"></productos-editar>
+            <!-- <productos-editar [idProd]="product.codProd" [categorias]="categoriasProd" [estados]="estadosProd"></productos-editar> -->
+            <productos-editar [idProd]="product.codProd" [categorias]="categoriasProd"></productos-editar>
             <button (click)="confirm($event)" (click)="obtenerCodProd(product.codProd)" class="btn btn-danger btn-sm mx-2">Eliminar</button>
           </td>
         </tr>

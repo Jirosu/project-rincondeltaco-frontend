@@ -31,18 +31,19 @@ export class ProductosFormComponent implements OnInit{
     precProd: 0,
     rutaImg: '',
     codCatProd: '',
-    codEstProd: '',
+    // codEstProd: '',
     ref_catProd: {
       codCatProd: '',
       descCatProd: ''
     },
-    ref_estProd: {
-      codEstProd: '',
-      descEstProd: ''
-    }
+    enabled: true
+    // ref_estProd: {
+    //   codEstProd: '',
+    //   descEstProd: ''
+    // }
   };
 
-  public estados: EstadoProducto[] = [];
+  // public estados: EstadoProducto[] = [];
   public categorias: CategoriaProducto[] = [];
 
   visible: boolean = false;
@@ -50,15 +51,15 @@ export class ProductosFormComponent implements OnInit{
   constructor(private _prodService: ProductosService, private _sharedService: SharedService, private messageService: MessageService) {}
 
   ngOnInit() {
-    this.getEstados();
+    // this.getEstados();
     this.getCategorias();
   }
 
-  getEstados() {
-    this._prodService.getEstados().subscribe(estados => {
-      this.estados = estados;
-    });
-  }
+  // getEstados() {
+  //   this._prodService.getEstados().subscribe(estados => {
+  //     this.estados = estados;
+  //   });
+  // }
 
   getCategorias() {
     this._prodService.getCategorias().subscribe(categorias => {
@@ -72,9 +73,10 @@ export class ProductosFormComponent implements OnInit{
     this.producto.rutaImg = this.imageFile.nativeElement.files[0].name;
 
     this.producto.ref_catProd.descCatProd = this.categorias.find(cat => cat.codCatProd === this.producto.ref_catProd.codCatProd)?.descCatProd || '';
-    this.producto.ref_estProd.descEstProd = this.estados.find(est => est.codEstProd === this.producto.ref_estProd.codEstProd)?.descEstProd || '';
+    // this.producto.ref_estProd.descEstProd = this.estados.find(est => est.codEstProd === this.producto.ref_estProd.codEstProd)?.descEstProd || '';
     this.producto.codCatProd = this.producto.ref_catProd.codCatProd;
-    this.producto.codEstProd = this.producto.ref_estProd.codEstProd;
+    // this.producto.codEstProd = this.producto.ref_estProd.codEstProd;
+    this.producto.enabled = this.producto.enabled;
 
     formData.append('data', JSON.stringify(this.producto));
 
@@ -94,20 +96,21 @@ export class ProductosFormComponent implements OnInit{
     this.showDialog(false);
     this.producto = {
       codProd: '',
-      nomProd: '',
-      descProd: '',
-      precProd: 0,
-      rutaImg: '',
+    nomProd: '',
+    descProd: '',
+    precProd: 0,
+    rutaImg: '',
+    codCatProd: '',
+    // codEstProd: '',
+    ref_catProd: {
       codCatProd: '',
-      codEstProd: '',
-      ref_catProd: {
-        codCatProd: '',
-        descCatProd: ''
-      },
-      ref_estProd: {
-        codEstProd: '',
-        descEstProd: ''
-      }
+      descCatProd: ''
+    },
+    enabled: true
+    // ref_estProd: {
+    //   codEstProd: '',
+    //   descEstProd: ''
+    // }
     };
   }
 

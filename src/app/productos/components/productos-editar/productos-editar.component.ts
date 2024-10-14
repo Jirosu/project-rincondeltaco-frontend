@@ -21,8 +21,6 @@ export class ProductosEditarComponent {
   @Input()
   public idProd: string = '';
   @Input()
-  public estados: EstadoProducto[] = [];
-  @Input()
   public categorias: CategoriaProducto[] = [];
 
   respuesta : ResponseProducto = {
@@ -39,15 +37,11 @@ export class ProductosEditarComponent {
     precProd: 0,
     rutaImg: '',
     codCatProd: '',
-    codEstProd: '',
     ref_catProd: {
       codCatProd: '',
       descCatProd: ''
     },
-    ref_estProd: {
-      codEstProd: '',
-      descEstProd: ''
-    }
+    enabled: true
   };
 
   constructor(private _prodService: ProductosService, private messageService: MessageService, private _sharedService: SharedService ) {}
@@ -65,18 +59,12 @@ export class ProductosEditarComponent {
   onSubmit() {
     let formData = new FormData();
 
-    let rutaSplit = this.producto.rutaImg.split('/Img/')
-    let ruta = rutaSplit[1];
-    let newRutaImg = ruta;
-
-    this.producto.rutaImg = newRutaImg;
+    let rutaSplit = this.producto.rutaImg.split('/producto')
+    this.producto.rutaImg = rutaSplit[1];
 
     this.producto.ref_catProd.descCatProd = this.categorias.find(cat => cat.codCatProd === this.producto.ref_catProd.codCatProd)?.descCatProd || '';
-    this.producto.ref_estProd.descEstProd = this.estados.find(est => est.codEstProd === this.producto.ref_estProd.codEstProd)?.descEstProd || '';
     this.producto.codCatProd = this.producto.ref_catProd.codCatProd;
-    this.producto.codEstProd = this.producto.ref_estProd.codEstProd;
-
-
+    this.producto.enabled = this.producto.enabled;
 
     formData.append('data', JSON.stringify(this.producto));
 

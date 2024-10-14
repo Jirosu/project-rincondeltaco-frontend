@@ -10,7 +10,7 @@ import { EstadoProducto } from '../interfaces/estado-producto.interface';
   providedIn: 'root'
 })
 export class ProductosService {
-  private readonly _apiUrl = 'http://localhost:8088';
+  private readonly _apiUrl = 'http://localhost:8082';
 
   constructor(private _http: HttpClient) { }
 
@@ -24,9 +24,11 @@ export class ProductosService {
         del producto original, pero con rutaImg reemplazado por la nueva url.
         Finalmente se devuelve un Observable de este nuevo array de productos.
       */
+    // /producto/imagen/
       map((productos: Producto[]) => {
         return productos.map((producto: Producto) => {
-          let nuevaRutaImg = producto.rutaImg.replace("/static/", "/");
+          // let nuevaRutaImg = producto.rutaImg.replace("/Img/", "/");
+          const nuevaRutaImg = `/producto${producto.rutaImg}`;
           return {
             ...producto,
             rutaImg: `${this._apiUrl}${nuevaRutaImg}`
@@ -41,10 +43,10 @@ export class ProductosService {
     return this._http.get<CategoriaProducto[]>(url);
   }
 
-  getEstados() {
-    const url = `${this._apiUrl}/estado/listar`;
-    return this._http.get<EstadoProducto[]>(url);
-  }
+  // getEstados() {
+  //   const url = `${this._apiUrl}/estado/listar`;
+  //   return this._http.get<EstadoProducto[]>(url);
+  // }
 
   createProducto(form: FormData) {
     const url = `${this._apiUrl}/producto/guardar`;

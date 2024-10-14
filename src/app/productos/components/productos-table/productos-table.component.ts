@@ -20,7 +20,7 @@ export class ProductosTableComponent implements OnInit{
   public loading: boolean = true;
   public id!: string;
 
-  estadosProd: EstadoProducto[] = [];
+  // estadosProd: EstadoProducto[] = [];
   categoriasProd: CategoriaProducto[] = [];
 
   private _respProd: ResponseProducto = {} as ResponseProducto;
@@ -33,7 +33,8 @@ export class ProductosTableComponent implements OnInit{
 
   ngOnInit() {
     this.loadProductos();
-    this.getEstados();
+    // this.getEstados();
+
     this.getCategorias();
     this._sharedService.formSubmitted.subscribe(() => {
       this.loadProductos();
@@ -46,11 +47,11 @@ export class ProductosTableComponent implements OnInit{
     });
   }
 
-  getEstados() {
-    this._prodService.getEstados().subscribe(estados => {
-      this.estadosProd = estados;
-    });
-  }
+  // getEstados() {
+  //   this._prodService.getEstados().subscribe(estados => {
+  //     this.estadosProd = estados;
+  //   });
+  // }
 
   getCategorias() {
     this._prodService.getCategorias().subscribe(categorias => {
@@ -65,11 +66,11 @@ export class ProductosTableComponent implements OnInit{
     });
   }
 
-  getSeverity(status: string) {
+  getSeverity(status: boolean) {
     switch (status) {
-      case 'Habilitado':
+      case true:
         return 'success';
-      case 'Deshabilitado':
+      case false:
         return 'warning';
       default:
         return 'info';

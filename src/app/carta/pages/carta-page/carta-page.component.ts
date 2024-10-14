@@ -21,7 +21,8 @@ export class CartaPageComponent implements OnInit{
 
   getProductos() {
     return this._prodService.getProductos().subscribe( respProds => {
-      this.allProducts = respProds.filter( prod => prod.ref_estProd.codEstProd === '01');
+      // this.allProducts = respProds.filter( prod => prod.ref_estProd.codEstProd === '01');
+      this.allProducts = respProds.filter( prod => prod.enabled);
     });
   }
 
