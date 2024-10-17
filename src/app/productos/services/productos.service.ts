@@ -4,7 +4,6 @@ import { Producto } from '../interfaces/producto.interface';
 import { map } from 'rxjs';
 import { ResponseProducto } from '../interfaces/response-producto.interface';
 import { CategoriaProducto } from '../interfaces/categoria-producto.interface';
-import { EstadoProducto } from '../interfaces/estado-producto.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -24,10 +23,8 @@ export class ProductosService {
         del producto original, pero con rutaImg reemplazado por la nueva url.
         Finalmente se devuelve un Observable de este nuevo array de productos.
       */
-    // /producto/imagen/
       map((productos: Producto[]) => {
         return productos.map((producto: Producto) => {
-          // let nuevaRutaImg = producto.rutaImg.replace("/Img/", "/");
           const nuevaRutaImg = `/producto${producto.rutaImg}`;
           return {
             ...producto,
@@ -42,11 +39,6 @@ export class ProductosService {
     const url = `${this._apiUrl}/categoria/listar`;
     return this._http.get<CategoriaProducto[]>(url);
   }
-
-  // getEstados() {
-  //   const url = `${this._apiUrl}/estado/listar`;
-  //   return this._http.get<EstadoProducto[]>(url);
-  // }
 
   createProducto(form: FormData) {
     const url = `${this._apiUrl}/producto/guardar`;

@@ -1,4 +1,4 @@
-nav{
+/* nav{
   background: #43773c;
   border-bottom: 3px solid #efaf49;
   height: 5rem;
@@ -11,4 +11,127 @@ nav{
   padding-bottom: 10px;
   padding-left: 20px;
   padding-right: 0px;
+} */
+
+*{
+  list-style-type: none;
+  text-decoration: none;
+}
+nav{
+  background: #43773c;
+  border-bottom: 3px solid #efaf49;
+  height: 5rem;
+  width: 100%;
+  display: flex;
+  vertical-align: middle;
+  justify-content: space-between;
+}
+
+.navbar-logo{
+  display: flex;
+  float: left;
+
+}
+
+.logo{
+  height: 4.5rem;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 0px;
+}
+
+.navbar-menu{
+  display: flex;
+  float: right;
+  vertical-align: middle;
+  align-items: center;
+}
+
+.navbar-menu li{
+  line-height: 80px;
+  transition: background-color 0.2s linear 0s;
+}
+
+.navbar-menu li a{
+  color: white;
+  font-size: 17px;
+  padding: 30px 25px;
+  text-transform: uppercase;
+}
+
+.navbar-menu li:hover{
+  background-color: #efaf49;
+  height: 100%;
+}
+
+.checkbtn{
+  font-size: 30px;
+  color: white;
+  float: right;
+  line-height: 80px;
+  margin-right: 40px;
+  cursor: pointer;
+  display: none;
+}
+
+#check{
+  display: none;
+}
+
+
+@media (max-width: 1025px){
+ .logo{
+     display: block;
+     padding-left: 5px;
+     padding-right: 0;
+ }
+
+ .navbar-menu li a{
+     font-size: 15px;
+ }
+}
+
+@media (max-width: 955px){
+ .checkbtn{
+     display: block;
+ }
+ .navbar-menu{
+     display: block;
+     position: fixed;
+     width: 100%;
+     height: 100vh;
+     background-color: #43773c;
+     top: 80px;
+     left: -100%;
+     text-align: center;
+     transition: all .5s;
+ }
+ .navbar-menu li{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+ .navbar-menu li a{
+     font-size: 18px;
+     width: 100%;
+ }
+ .navbar-menu li:hover{
+     color:#efaf49;
+     height: auto;
+ }
+ #check:checked ~ .navbar-menu{
+     left: 0;
+     z-index: 9999;
+ }
+}
+
+@media (max-width: 400px){
+  .logo{
+      width: 18rem;
+      margin-top: 15px;
+      padding-top: 3px;
+      padding-bottom: 3px;
+      height: 2.5rem;
+  }
 }

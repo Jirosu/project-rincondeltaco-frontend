@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { LoginService } from '../../../login/services/login.service';
 
 @Component({
   selector: 'shared-header',
@@ -8,27 +8,16 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit{
   valor: boolean = false;
+  isAdmin: boolean = false;
 
-  constructor(private _router: Router) { }
+  constructor(private _loginService: LoginService) { }
 
   ngOnInit() {
-    if(sessionStorage.getItem('valor') == null) {
-      this.valor = false;
-      this._router.navigate(['/login']);
-    } else {
-      this.valor = true;
-    }
-
+    this.getUserRol();
   }
 
-  cerrarSesion() {
-    sessionStorage.removeItem('valor');
-    sessionStorage.removeItem('nombre');
-    sessionStorage.removeItem('rol');
-
-    console.log('Sesión cerrada');
-    this.valor = false;
-    this._router.navigate(['/login']);
+  getUserRol() {
+    this.isAdmin = this._loginService.getUserRol() === 'Administrador';
   }
 
 }

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Login } from '../../interfaces/login.interface';
-import { UsuariosService } from '../../../usuarios/services/usuarios.service';
 import { Usuario } from '../../../usuarios/interface/usuario.interface';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';

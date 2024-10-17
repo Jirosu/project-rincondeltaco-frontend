@@ -1,0 +1,65 @@
+<div *ngIf="isLogged; else iniciarSesion">
+    <li (click)="logout()">
+        Cerrar Sesión
+    </li>
+  </div>
+  
+  <ng-template #iniciarSesion>
+    <li (click)="changeVisibility()">
+        Iniciar Sesión
+    </li>
+
+    <p-dialog 
+        [(visible)]="visible"
+        [modal]="true" 
+        styleClass="border-0"
+        >
+        <ng-template pTemplate="headless">
+            <div class="container " id="container" [ngClass]="{'right-panel-active':registerMode}">
+                <div class="form-container sign-up-container">
+                    <form (ngSubmit)="register()" #registerFom="ngForm">
+                        <div class="close-icon-container" (click)="changeVisibility()">
+                            <i class="fa fa-times fa-lg" aria-hidden="true"></i>
+                        </div>
+                        <h1  class="titulo text-4xl">Crea tu cuenta!</h1>
+                        <span class="texto-span">o usa tu correo para registrarte</span>
+                        <input type="text" placeholder="Nombres" name="nombres" [(ngModel)]="registerUser.nomUsu" required />
+                        <input type="text" placeholder="Apellidos" name="apellidos" [(ngModel)]="registerUser.apeUsu" required />
+                        <input type="email" placeholder="Email" name="email" [(ngModel)]="registerUser.email" required />
+                        <input type="password" placeholder="Contraseña" name="password" [(ngModel)]="registerUser.contrasena" required />
+                        <button type="submit" class="boton" [ngClass]="{'disabled-btn':registerFom.invalid}" [disabled]="registerFom.invalid">Registrarse</button>                    
+                    </form>
+                </div>
+                <div class="form-container sign-in-container">
+                    <form (ngSubmit)="login()" #loginFom="ngForm">
+                        <h1 class="titulo">Inicia sesión</h1>
+                        <span class="texto-span">o usa tu cuenta</span>
+                        <input type="email" placeholder="Correo" name="email" [(ngModel)]="loginUser.email" required/>
+                        <input type="password" placeholder="Contraseña" name="password" [(ngModel)]="loginUser.contrasena" required/>
+                        <button type="submit" class="boton" [ngClass]="{'disabled-btn':loginFom.invalid}" [disabled]="loginFom.invalid">Ingresar</button>
+                    </form>
+                </div>
+                <div class="overlay-container">
+                    <div class="overlay">
+                        <div class="overlay-panel overlay-left">
+                            <h1 class="titulo">¿Deseas iniciar sesion?</h1>
+                            <p class="texto-p">Si eso es lo que buscas <br> Hazlo aquí!</p>
+                            <button class="ghost boton" id="signIn" (click)="changeMode()">Iniciar Sesión</button>
+                        </div>
+                        <div class="overlay-panel overlay-right">
+                            <div class="close-icon-container" (click)="changeVisibility()">
+                                <i class="fa fa-times fa-lg" aria-hidden="true"></i>
+                            </div>
+                            <h1 class="titulo">Bienvenido!</h1>
+                            <p class="texto-p">¿Deseas registrarte? <br> Hazlo aquí</p>
+                            <button class="ghost boton" id="signUp" (click)="changeMode()">Registrarse</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dialog>
+
+</ng-template>
+
+<p-toast position="bottom-center" [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'500ms'" [hideTransformOptions]="'1000ms'" [showTransformOptions]="'translateY(100%)'"/>

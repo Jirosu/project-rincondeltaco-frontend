@@ -6,7 +6,6 @@ import { ProductosService } from '../../services/productos.service';
 import { SharedService } from '../../../shared/services/shared.service';
 
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { EstadoProducto } from '../../interfaces/estado-producto.interface';
 import { CategoriaProducto } from '../../interfaces/categoria-producto.interface';
 
 @Component({
@@ -20,7 +19,6 @@ export class ProductosTableComponent implements OnInit{
   public loading: boolean = true;
   public id!: string;
 
-  // estadosProd: EstadoProducto[] = [];
   categoriasProd: CategoriaProducto[] = [];
 
   private _respProd: ResponseProducto = {} as ResponseProducto;
@@ -33,8 +31,6 @@ export class ProductosTableComponent implements OnInit{
 
   ngOnInit() {
     this.loadProductos();
-    // this.getEstados();
-
     this.getCategorias();
     this._sharedService.formSubmitted.subscribe(() => {
       this.loadProductos();
@@ -46,12 +42,6 @@ export class ProductosTableComponent implements OnInit{
       this.productos = prods;
     });
   }
-
-  // getEstados() {
-  //   this._prodService.getEstados().subscribe(estados => {
-  //     this.estadosProd = estados;
-  //   });
-  // }
 
   getCategorias() {
     this._prodService.getCategorias().subscribe(categorias => {

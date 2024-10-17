@@ -7,9 +7,7 @@ export interface Producto {
   descProd: string;
   precProd: number;
   rutaImg: string;
-  // codEstProd: string,
   codCatProd: string,
   ref_catProd: CategoriaProducto;
-  // ref_estProd: EstadoProducto;
   enabled: boolean,
 }

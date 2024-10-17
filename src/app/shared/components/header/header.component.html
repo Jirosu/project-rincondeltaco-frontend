@@ -9,9 +9,9 @@
           <i class="bx bx-menu" ></i>
       </label>
       <ul class="navbar-menu">
-          <li><a routerLink="/productos">Productos</a></li>
-          <li><a routerLink="/usuarios">Usuarios</a></li>
-          <li *ngIf="valor" style="cursor: pointer;"><a (click)="cerrarSesion()">Cerrar Sesión</a></li>
+          <li *ngIf=" isAdmin "><a routerLink="/productos">Productos</a></li>
+          <li *ngIf=" isAdmin "><a routerLink="/usuarios">Usuarios</a></li>          
+          <login-register (onUserSessionChanged)="getUserRol()"></login-register>
       </ul>
   </div>
   </nav>

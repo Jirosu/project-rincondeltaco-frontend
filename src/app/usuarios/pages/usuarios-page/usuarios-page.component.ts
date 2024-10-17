@@ -1,18 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { LoginService } from '../../../login/services/login.service';
 
 @Component({
   selector: 'usuarios-page',
   templateUrl: './usuarios-page.component.html',
   styleUrl: './usuarios-page.component.css'
 })
-export class UsuariosPageComponent implements OnInit{
+export class UsuariosPageComponent implements OnInit {
 
-  constructor(private _router: Router) { }
+  constructor(private _loginSev: LoginService) { }
 
   ngOnInit() {
-    if(sessionStorage.getItem('valor') == null) {
-      this._router.navigate(['/login']);
-    }
+    this._loginSev.validateRol('Administrador');
   }
 }

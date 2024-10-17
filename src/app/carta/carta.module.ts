@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { CartaHeaderComponent } from './components/carta-header/carta-header.component';
 import { CartaFooterComponent } from './components/carta-footer/carta-footer.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -19,7 +20,8 @@ import { CartaFooterComponent } from './components/carta-footer/carta-footer.com
   imports: [
     CommonModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ]
 })
 export class CartaModule { }
