@@ -24,6 +24,13 @@ export class LoginService {
     return true;
   }
 
+  validateLoginBoolean() : boolean {
+    if(sessionStorage.getItem('valor') == null || sessionStorage.getItem('nombre') == null || sessionStorage.getItem('rol')  == null) {
+      return false;
+    }
+    return true;
+  }
+
   validateRol(rol: string) {
     if(sessionStorage.getItem('rol') != rol) {
       this._router.navigate(['/carta']);

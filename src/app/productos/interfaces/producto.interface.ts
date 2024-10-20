@@ -2,7 +2,7 @@ import { CategoriaProducto } from "./categoria-producto.interface";
 import { EstadoProducto } from "./estado-producto.interface";
 
 export interface Producto {
-  codProd: string;
+  codProd: number;
   nomProd: string;
   descProd: string;
   precProd: number;

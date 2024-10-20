@@ -1,0 +1,21 @@
+<div class='contenedor-prod-carrito'>
+    <div class='contenedor-prod-info'>
+        <div class='cont-prod-info-img'>
+            <img [src]="producto.rutaImg">
+        </div>
+        <div class='cont-prod-info-nyp'>
+            <p class='nombre-prod-carrito'>{{producto.nomProd}} </p>
+            <p class='precio-prod-carrito'>{{producto.precProd | currency : 'S/ ' }} </p>
+        </div>
+    </div>
+    <div class='contenedor-prod-btn'>
+        <div class='cont-btn-eliminar'>
+            <button class='btn-eliminar' (click)="deleteProdCarrito()"><i class="fa-solid fa-trash-can"></i></button>
+        </div>
+        <div class='cont-cantidad'>
+            <button type="button" class="btn-cant btn-menos" id="btn-menos" (click)="reduceQuantity()" [disabled]="productoCarrito.cantidad <= 1"><i class="fa-solid fa-minus"></i></button>
+            <input type="number" name="" id="txtCantidad" class="txtCantidad" min="1" [value]="productoCarrito.cantidad" readonly>
+            <button type="button" class="btn-cant btn-mas" id="btn-mas" (click)="increaseQuantity()"><i class="fa-solid fa-plus"></i></button>
+        </div>
+    </div>
+</div>

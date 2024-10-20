@@ -1,0 +1,50 @@
+<div class="cont-btn-carrito">
+    <button (click)="changeCartVisibility()"  class="btn-carrito" >
+        <i class="pi pi-shopping-cart" style="font-size: 1rem"></i>
+    </button>
+</div>
+
+<p-sidebar [(visible)]="cartVisibility" position="right" styleClass="w-30rem border-0">
+    <ng-template pTemplate="headless">
+        <div class="contenedor-title-list flex w-full flex-column justify-content-between " style="height: 100%;">
+            <h2 class="title-cart">TU CARRITO</h2>
+            <div class=" flex-grow-1 overflow-y-auto" >
+
+                <carrito-item 
+                    *ngFor="let prod of carritoProductos"
+                    [producto]="getProductoById(prod.idProd)" 
+                    [productoCarrito]="prod"
+                    >
+                </carrito-item>
+                                                                    
+            </div>
+
+            <div class="m-3" *ngIf="carritoProductos.length > 0, else cartIsEmpty">
+                <div class=" flex justify-content-between p-2 cart-border">
+                    <p class="">Subtotal: </p>
+                    <span class=""> {{getSubtotal() | currency: 'S/ '}} </span>
+                </div>
+                <div class="flex justify-content-between p-2">
+                    <p class="">Delivery: </p>
+                    <span class=""> {{15| currency: 'S/ '}} </span>
+                </div>
+                <div class="flex justify-content-between p-2 text-lg font-semibold cart-border">
+                    <p class=" total">Total: </p>
+                    <span class=""> {{getTotal() | currency: 'S/ '}} </span>
+                </div>
+            </div>
+
+            <ng-template #cartIsEmpty>
+                <div class="flex flex-column justify-content-center align-items-center h-full ">
+                    <i class="pi pi-shopping-cart" style="font-size: 3.5rem"></i>
+                    <p class="text-3xl font-medium">Su carrito está vacío</p>
+                </div>
+            </ng-template>
+
+            <div class="cart-btn-container w-full text-center">
+                <button class="btn-cart cart-btn-pagar" [ngClass]=" {'disabled': !validateLoginCarrito()} " [disabled]="!validateLoginCarrito()"  (click)="goToPagoPage()">Ir a pagar</button>
+                <button class="btn-cart cart-btn-back" (click)="changeCartVisibility()" >Seguir comprando</button>
+            </div>
+        </div>
+    </ng-template>
+</p-sidebar>

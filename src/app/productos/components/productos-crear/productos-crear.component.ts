@@ -1,11 +1,9 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
 
 import { MessageService } from 'primeng/api';
 import { ProductosService } from '../../services/productos.service';
 import { SharedService } from '../../../shared/services/shared.service';
 
-import { EstadoProducto } from '../../interfaces/estado-producto.interface';
 import { CategoriaProducto } from '../../interfaces/categoria-producto.interface';
 import { ResponseProducto } from '../../interfaces/response-producto.interface';
 import { Producto } from '../../interfaces/producto.interface';
@@ -25,25 +23,19 @@ export class ProductosFormComponent implements OnInit{
   }
 
   producto: Producto = {
-    codProd: '',
+    codProd: 0,
     nomProd: '',
     descProd: '',
     precProd: 0,
     rutaImg: '',
     codCatProd: '',
-    // codEstProd: '',
     ref_catProd: {
       codCatProd: '',
       descCatProd: ''
     },
     enabled: true
-    // ref_estProd: {
-    //   codEstProd: '',
-    //   descEstProd: ''
-    // }
   };
 
-  // public estados: EstadoProducto[] = [];
   public categorias: CategoriaProducto[] = [];
 
   visible: boolean = false;
@@ -51,15 +43,8 @@ export class ProductosFormComponent implements OnInit{
   constructor(private _prodService: ProductosService, private _sharedService: SharedService, private messageService: MessageService) {}
 
   ngOnInit() {
-    // this.getEstados();
     this.getCategorias();
   }
-
-  // getEstados() {
-  //   this._prodService.getEstados().subscribe(estados => {
-  //     this.estados = estados;
-  //   });
-  // }
 
   getCategorias() {
     this._prodService.getCategorias().subscribe(categorias => {
@@ -73,9 +58,7 @@ export class ProductosFormComponent implements OnInit{
     this.producto.rutaImg = this.imageFile.nativeElement.files[0].name;
 
     this.producto.ref_catProd.descCatProd = this.categorias.find(cat => cat.codCatProd === this.producto.ref_catProd.codCatProd)?.descCatProd || '';
-    // this.producto.ref_estProd.descEstProd = this.estados.find(est => est.codEstProd === this.producto.ref_estProd.codEstProd)?.descEstProd || '';
     this.producto.codCatProd = this.producto.ref_catProd.codCatProd;
-    // this.producto.codEstProd = this.producto.ref_estProd.codEstProd;
     this.producto.enabled = this.producto.enabled;
 
     formData.append('data', JSON.stringify(this.producto));
@@ -87,30 +70,23 @@ export class ProductosFormComponent implements OnInit{
 
     this._prodService.createProducto(formData).subscribe(response => {
       this.respuesta = response;
-      //console.log(this.respuesta);
       this.showToast();
-      //console.log('CUATRO');
       this._sharedService.formSubmitted.next();
     });
 
     this.showDialog(false);
     this.producto = {
-      codProd: '',
+      codProd: 0,
     nomProd: '',
     descProd: '',
     precProd: 0,
     rutaImg: '',
     codCatProd: '',
-    // codEstProd: '',
     ref_catProd: {
       codCatProd: '',
       descCatProd: ''
     },
     enabled: true
-    // ref_estProd: {
-    //   codEstProd: '',
-    //   descEstProd: ''
-    // }
     };
   }
 

@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { UsuariosService } from '../../../usuarios/services/usuarios.service';
 import { ResponseUsuario } from '../../../usuarios/interface/response-usuario.interface';
+import { CarritoService } from '../../../carrito/services/carrito.service';
 
 @Component({
   selector: 'login-register',
@@ -45,7 +46,8 @@ export class LoginRegisterComponent implements OnInit {
   }
 
   constructor(private _loginService: LoginService, private _usuService: UsuariosService,
-      private _router: Router, private messageService: MessageService) { }
+      private _router: Router, private messageService: MessageService,
+      private _carritoService: CarritoService) { }
 
   changeVisibility() : void {
     this.visible = !this.visible;    
@@ -153,6 +155,7 @@ export class LoginRegisterComponent implements OnInit {
     sessionStorage.removeItem('valor');
     sessionStorage.removeItem('nombre');
     sessionStorage.removeItem('rol');
+    this._carritoService.deleteCarrito();
 
     this.isLogged = false;
     this.onUserSessionChanged.emit();

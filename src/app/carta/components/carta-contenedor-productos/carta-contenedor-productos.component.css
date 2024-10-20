@@ -48,3 +48,32 @@
   font-size: 36px;
   margin: 40px 0 15px;
 }
+
+.food-details{
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 15px 30px;
+  align-items: center;
+}
+
+.food-price{
+  font-size: 18px;
+}
+
+.food-button{
+  transition: all 0.2s ease;
+  padding: 10px 24px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 0px solid #EC9D1F;
+  background-color: #EC9D1F;
+  color: #f3f3f3;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.food-button:hover{
+  color: rgba(255, 255, 255, 1) !important;
+  box-shadow: 0 4px 16px rgba(236, 157, 31, 1);
+  transition: all 0.2s ease;
+}

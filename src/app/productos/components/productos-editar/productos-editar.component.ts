@@ -19,7 +19,7 @@ export class ProductosEditarComponent {
   codProd: string = '';
 
   @Input()
-  public idProd: string = '';
+  public idProd: number = 0;
   @Input()
   public categorias: CategoriaProducto[] = [];
 
@@ -31,7 +31,7 @@ export class ProductosEditarComponent {
   visible: boolean = false;
 
   producto: Producto = {
-    codProd: '',
+    codProd: 0,
     nomProd: '',
     descProd: '',
     precProd: 0,
