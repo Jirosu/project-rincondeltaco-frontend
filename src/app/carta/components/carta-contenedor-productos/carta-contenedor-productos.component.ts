@@ -3,6 +3,7 @@ import { CategoriaProducto } from '../../../productos/interfaces/categoria-produ
 import { Producto } from '../../../productos/interfaces/producto.interface';
 import { CarritoService } from '../../../carrito/services/carrito.service';
 import { MessageService } from 'primeng/api';
+import { count } from 'rxjs';
 
 @Component({
   selector: 'carta-contenedor-productos',
@@ -36,7 +37,9 @@ export class CartaContenedorProductosComponent {
   }
 
   showSuccess(name: string){
-    this.messageService.add({ severity: 'success', summary: 'Producto agregado!', detail: `Se agregó el producto ${name}` });
+    let count = 0;
+    count++;
+    this.messageService.add({ id: count, life: 2000, key:'cartToast', severity: 'success', summary: 'Producto agregado!', detail: `Se agregó el producto ${name}` });
   }
 
 }

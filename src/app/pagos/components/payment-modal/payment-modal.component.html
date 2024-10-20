@@ -1,0 +1,107 @@
+<p-dialog [(visible)]="visible" [modal]="true" styleClass="border-0 overflow-y-auto">
+  <ng-template pTemplate="headless">
+    <div class="d-flex gap-3 justify-content-center p-3">
+      <section class="form-pago">
+        <div class="cont-pago">
+          <h2>Checkout</h2>
+          <div class="form-checkout" id="form-pago">
+            <div class="cont-form cont-direccion">
+              <h3>¿A donde le enviamos el pedido?</h3>
+              <div class="inputs-direccion">
+                <label>Dirección <input type="text" name="direccion_destinatario" id="direccion_destinatario"
+                    class="w-100 input" placeholder="Ingrese aquí su dirección" required></label>
+                <div class="cont-selects">
+                  <label>Distrito
+                    <select name="distrito_destinatario" id="distrito_destinatario" class="input" required>
+                      <option value disabled selected>-- Seleccione aquí --</option>
+                      <option value="Cercado de Lima">Cercado de Lima</option>
+                      <option value="San Miguel">San Miguel</option>
+                      <option value="Pueblo Libre">Pueblo Libre</option>
+                      <option value="Ate">Ate</option>
+                      <option value="Breña">Breña</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="cont-form cont-form-contacto">
+              <h3>¿Quién recibirá el pedido?</h3>
+              <div class="cont-contacto">
+                <div class="inputs-contacto">
+                  <label>Nombre <input type="text" name="nombre_destinatario" id="nombre_destinatario"
+                      class="input label-contacto-nomape" placeholder="Ingrese aquí los nombre!" required></label>
+                  <label>Apellido <input type="text" name="apellido_destinatario" id="apellido_destinatario"
+                      class="input label-contacto-nomape" placeholder="Ingrese aquí los apellidos!" required></label>
+                  <label>Telefono <input type="number" name="telefono_destinatario" id="telefono_destinatario"
+                      class="input label-contacto-tel" placeholder="999999999" required></label>
+                </div>
+              </div>
+            </div>
+            <div class="cont-form cont-met-pago">
+              <h3>Realice el Pago aquí</h3>
+              <div class="tarjeta gap-1">
+                <div class="top align-items-center justify-content-center">
+                  <p>Ingrese los datos de su Tarjeta</p>
+                  <hr>
+                </div>
+                <div class="tarjeta-details">
+                  <input type="text" placeholder="0000 0000 0000 0000" name="numtarjeta" id="input-numtarjeta" required>
+                  <span>Número de Tarjeta</span> <i class="fa fa-credit-card"></i>
+                </div>
+                <div class="exp-cvv">
+                  <div class="tarjeta-details">
+                    <input type="text" placeholder="mm/yyyy" name="expcvv" id="fecexp" required> <span>Fecha de
+                      Expiración</span> <i class="fa fa-calendar"></i>
+                  </div>
+                  <div class="tarjeta-details">
+                    <input type="number" placeholder="000" name="numcvv" id="cvv" required> <span>CVV</span> <i
+                      class="fa fa-info-circle"></i>
+                  </div>
+                </div>
+                <div class="tarjeta-details">
+                  <input type="text" placeholder="Nombres y Apellidos Completos" name="nombre" id="input-nombre"
+                    required>
+                  <span>Titular de la Tarjeta</span>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div class="cont-tyc">
+              <input type="checkbox" name="terminos" id="chk-terminos" required>
+              <p>Acepto los términos y condiciones del sitio.</p>
+            </div>
+            <div class="cont-boton">
+              <input type="submit" id="btn-compra" class="btn-compra" value="Finalizar compra">
+            </div>
+          </div>
+        </div>
+      </section>
+      <aside>
+        <div class="cont-aside">
+          <h2>Resumen de Pedido</h2>
+          <div id="aside-prod" class="aside-prod">
+
+          </div>
+          <div class="aside-total">
+            <div class="cont-totales subtotal">
+              <p class="p-subtotal">Subtotal</p>
+              <p class="p-subtotal-calc"></p>
+            </div>
+            <div class="cont-totales delivery">
+              <p class="p-delivery">Delivery</p>
+              <p class="p-delivery-calc">S/ 15.00</p>
+            </div>
+            <div class="cont-totales total">
+              <p class="p-total">Total</p>
+              <p class="p-total-calc"></p>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </ng-template>
+</p-dialog>
+
+<p-toast key="paymentToast" position="bottom-center" [showTransformOptions]="'translateY(100%)'"
+  [showTransitionOptions]="'500ms'" [hideTransformOptions]="'1000ms'" [showTransformOptions]="'translateY(100%)'" />

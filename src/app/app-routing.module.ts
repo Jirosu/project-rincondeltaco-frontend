@@ -8,6 +8,11 @@ import { UsuariosPageComponent } from './usuarios/pages/usuarios-page/usuarios-p
 
 const routes: Routes = [
   {
+    path: 'carta',
+    component: CartaPageComponent,
+    loadChildren: () => import('./carta/carta.module').then(m => m.CartaModule)
+  },
+  {
     path: 'login',
     component: LoginPageComponent
   },
@@ -15,11 +20,6 @@ const routes: Routes = [
     path: 'usuarios',
     component: UsuariosPageComponent,
     loadChildren: () => import('./usuarios/usuarios.module').then(m => m.UsuariosModule)
-  },
-  {
-    path: 'carta',
-    component: CartaPageComponent,
-    loadChildren: () => import('./carta/carta.module').then(m => m.CartaModule)
   },
   {
     path: 'productos',

@@ -6,8 +6,7 @@ import { CarritoSidebarComponent } from './components/carrito-sidebar/carrito-si
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
 import { CarritoItemComponent } from './components/carrito-item/carrito-item.component';
-
-
+import { PagosModule } from '../pagos/pagos.module';
 
 @NgModule({
   declarations: [
@@ -17,8 +16,9 @@ import { CarritoItemComponent } from './components/carrito-item/carrito-item.com
   imports: [
     CommonModule,
     SidebarModule,
-    ButtonModule
-  ], 
+    ButtonModule,
+    PagosModule
+  ],
   exports: [
     CarritoSidebarComponent
   ]

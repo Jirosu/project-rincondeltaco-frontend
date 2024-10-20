@@ -10,13 +10,13 @@
             <h2 class="title-cart">TU CARRITO</h2>
             <div class=" flex-grow-1 overflow-y-auto" >
 
-                <carrito-item 
+                <carrito-item
                     *ngFor="let prod of carritoProductos"
-                    [producto]="getProductoById(prod.idProd)" 
+                    [producto]="getProductoById(prod.idProd)"
                     [productoCarrito]="prod"
                     >
                 </carrito-item>
-                                                                    
+
             </div>
 
             <div class="m-3" *ngIf="carritoProductos.length > 0, else cartIsEmpty">
@@ -48,3 +48,5 @@
         </div>
     </ng-template>
 </p-sidebar>
+
+<payment-modal [visible]="modalPaymentModule"></payment-modal>
