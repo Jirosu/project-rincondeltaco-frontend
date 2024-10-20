@@ -1,5 +1,5 @@
-<p-dialog [(visible)]="visible" [modal]="true" styleClass="border-0 overflow-y-auto">
-  <ng-template pTemplate="headless">
+<p-dialog [(visible)]="visible" [modal]="true" styleClass="border-0 overflow-y-auto" header="¡Completemos tu compra!" [draggable]="false">
+  <ng-template pTemplate="body">
     <div class="d-flex gap-3 justify-content-center p-3">
       <section class="form-pago">
         <div class="cont-pago">
@@ -86,7 +86,7 @@
           <div class="aside-total">
             <div class="cont-totales subtotal">
               <p class="p-subtotal">Subtotal</p>
-              <p class="p-subtotal-calc"></p>
+              <p class="p-subtotal-calc">{{ subTotal || 0 | currency: 'S/' }}</p>
             </div>
             <div class="cont-totales delivery">
               <p class="p-delivery">Delivery</p>
@@ -94,7 +94,7 @@
             </div>
             <div class="cont-totales total">
               <p class="p-total">Total</p>
-              <p class="p-total-calc"></p>
+              <p class="p-total-calc">{{ subTotal + 15 || 0 | currency: 'S/' }}</p>
             </div>
           </div>
         </div>

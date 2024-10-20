@@ -12,7 +12,7 @@ export class CarritoSidebarComponent {
   @Input()
   productos: Producto[] = [];
 
-  modalPaymentModule: boolean = false;
+  modalPaymentModule: boolean = true;
 
   cartVisibility: boolean = false;
 

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { SharedService } from '../../../shared/services/shared.service';
 
@@ -7,11 +7,16 @@ import { SharedService } from '../../../shared/services/shared.service';
   templateUrl: './payment-modal.component.html',
   styleUrl: './payment-modal.component.css'
 })
-export class PaymentModalComponent {
+export class PaymentModalComponent implements OnInit{
   @Input()
   visible: boolean = false;
+  subTotal: number = 0;
 
   constructor(private messageService: MessageService, private _sharedService: SharedService) { }
+
+  ngOnInit() {
+    this.subTotal = this._sharedService.getSubtotal();
+  }
 
   showPaymentSuccess(name: string){
     let count = 0;

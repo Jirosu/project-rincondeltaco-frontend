@@ -3,15 +3,15 @@
         Cerrar Sesión
     </li>
   </div>
-  
+
   <ng-template #iniciarSesion>
     <li (click)="changeVisibility()">
         Iniciar Sesión
     </li>
 
-    <p-dialog 
+    <p-dialog
         [(visible)]="visible"
-        [modal]="true" 
+        [modal]="true"
         styleClass="border-0"
         >
         <ng-template pTemplate="headless">
@@ -27,7 +27,7 @@
                         <input type="text" placeholder="Apellidos" name="apellidos" [(ngModel)]="registerUser.apeUsu" required />
                         <input type="email" placeholder="Email" name="email" [(ngModel)]="registerUser.email" required />
                         <input type="password" placeholder="Contraseña" name="password" [(ngModel)]="registerUser.contrasena" required />
-                        <button type="submit" class="boton" [ngClass]="{'disabled-btn':registerFom.invalid}" [disabled]="registerFom.invalid">Registrarse</button>                    
+                        <button type="submit" class="boton" [ngClass]="{'disabled-btn':registerFom.invalid}" [disabled]="registerFom.invalid">Registrarse</button>
                     </form>
                 </div>
                 <div class="form-container sign-in-container">
