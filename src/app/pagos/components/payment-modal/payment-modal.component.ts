@@ -9,16 +9,16 @@ import PedidoRequest from '../../interfaces/pedidoRequest.interface';
   templateUrl: './payment-modal.component.html',
   styleUrl: './payment-modal.component.css'
 })
-export class PaymentModalComponent {
+export class PaymentModalComponent implements OnInit{
 
-  pedidoRequest: PedidoRequest ={
+  pedidoRequest: PedidoRequest = {
     datosPedido: {
       idUsuario: 0,
       distritoEntrega: '',
       direccionEntrega: '',
       telefonoEntrega: ''
     },
-    listaProductos: this.getCarritoStorage()
+    listaProductos: []
   }
 
   @Input()
@@ -33,10 +33,14 @@ export class PaymentModalComponent {
 
   constructor(private messageService: MessageService) { }
 
+  ngOnInit(): void {
+
+  }
+
   getCarritoStorage() {
     const data = sessionStorage.getItem('pedido');
     if(data) {
-      return JSON.parse(data);
+      this.pedidoRequest.listaProductos = JSON.parse(data);
     }
   }
 
