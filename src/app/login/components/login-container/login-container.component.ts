@@ -39,7 +39,8 @@ export class LoginContainerComponent {
     let formData = new FormData();
     formData.append('data', JSON.stringify(this.usuarioEnc));
 
-    this._loginService.loginUsuarios(formData).subscribe({
+    // this._loginService.loginUsuarios(formData).subscribe({
+    this._loginService.loginUsuarios(this.loginUser).subscribe({
       next: (response) => {
         if (!response.valor) {
           this.showError();

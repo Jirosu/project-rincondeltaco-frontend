@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ResponseUsuario } from '../../usuarios/interface/response-usuario.interface';
 import { Router } from '@angular/router';
+import { Login } from '../interfaces/login.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,10 @@ export class LoginService {
 
   constructor(private _http: HttpClient, private _router: Router) { }
 
-  loginUsuarios(form: FormData) {
+  // loginUsuarios(form: FormData) {
+  loginUsuarios(loginData: Login) {
     const url = `${this._apiUrl}/usuario/login`;
-    return this._http.post<ResponseUsuario>(url, form);
+    return this._http.post<ResponseUsuario>(url, loginData);
   }
 
   validateLogin() : boolean {

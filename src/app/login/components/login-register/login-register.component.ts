@@ -77,18 +77,19 @@ export class LoginRegisterComponent implements OnInit {
   }
 
   login() : void {
-    const user: Usuario = {
-      codUsu: '',
-      nomUsu: '',
-      apeUsu: '',
-      ...this.loginUser,
-      rolUsu: ''
-    }
+    // const user: Usuario = {
+    //   codUsu: '',
+    //   nomUsu: '',
+    //   apeUsu: '',
+    //   ...this.loginUser,
+    //   rolUsu: ''
+    // }
 
-    let formData = new FormData();
-    formData.append('data', JSON.stringify(user));
+    // let formData = new FormData();
+    // formData.append('data', JSON.stringify(user));
     
-    this._loginService.loginUsuarios(formData).subscribe({
+    // this._loginService.loginUsuarios(formData).subscribe({
+    this._loginService.loginUsuarios(this.loginUser).subscribe({
       next: (response) => {
         if (!response.valor) {
           this.respuesta = response;
@@ -97,6 +98,7 @@ export class LoginRegisterComponent implements OnInit {
         }
         sessionStorage.setItem('nombre', response.name!);
         sessionStorage.setItem('rol', response.rol!);
+        sessionStorage.setItem('id', (response.id!.toString()));
         sessionStorage.setItem('valor', 'true');
 
         this.respuesta = response;
@@ -152,9 +154,11 @@ export class LoginRegisterComponent implements OnInit {
   }
 
   logout() {
-    sessionStorage.removeItem('valor');
-    sessionStorage.removeItem('nombre');
-    sessionStorage.removeItem('rol');
+    // sessionStorage.removeItem('valor');
+    // sessionStorage.removeItem('nombre');
+    // sessionStorage.removeItem('rol');
+    // sessionStorage.removeItem('id');
+    sessionStorage.clear();
     this._carritoService.deleteCarrito();
 
     this.isLogged = false;
