@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ToastModule } from 'primeng/toast';
 import { DialogModule } from 'primeng/dialog';
 import { PaymentModalComponent } from './components/payment-modal/payment-modal.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { PaymentModalComponent } from './components/payment-modal/payment-modal.
   imports: [
     CommonModule,
     ToastModule,
-    DialogModule
+    DialogModule,
+    FormsModule
   ],
   exports: [
     PaymentModalComponent
