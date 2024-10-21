@@ -16,14 +16,14 @@ export class UsuariosService {
     return this._http.get<Usuario[]>(url);
   }
 
-  createUsuario(form: FormData){
+  createUsuario(usuario: Usuario){
     const url = `${this._apiUrl}/usuario/guardar`;
-    return this._http.post<ResponseUsuario>(url, form);
+    return this._http.post<ResponseUsuario>(url, usuario);
   }
 
-  updateUsuario(form: FormData){
+  updateUsuario(usuario: Usuario){
     const url = `${this._apiUrl}/usuario/editar`;
-    return this._http.put<ResponseUsuario>(url, form);
+    return this._http.put<ResponseUsuario>(url, usuario);
   }
 
   deleteUsuario(id: string){

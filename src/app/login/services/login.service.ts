@@ -12,7 +12,6 @@ export class LoginService {
 
   constructor(private _http: HttpClient, private _router: Router) { }
 
-  // loginUsuarios(form: FormData) {
   loginUsuarios(loginData: Login) {
     const url = `${this._apiUrl}/usuario/login`;
     return this._http.post<ResponseUsuario>(url, loginData);

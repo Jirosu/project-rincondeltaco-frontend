@@ -16,13 +16,6 @@ export class ProductosService {
   getProductos() {
     const url = `${this._apiUrl}/producto/listar`;
     return this._http.get<Producto[]>(url).pipe(
-      /*
-        Del array de productos que se obtiene del Observable
-        vamos a aplicar un map para transformar cada producto,
-        para cada producto en el array, crea un nuevo objeto que es una copia
-        del producto original, pero con rutaImg reemplazado por la nueva url.
-        Finalmente se devuelve un Observable de este nuevo array de productos.
-      */
       map((productos: Producto[]) => {
         return productos.map((producto: Producto) => {
           const nuevaRutaImg = `/producto${producto.rutaImg}`;
@@ -45,9 +38,9 @@ export class ProductosService {
     return this._http.post<ResponseProducto>(url, form);
   }
 
-  updateProducto(form: FormData) {
+  updateProducto(producto: Producto) {
     const url = `${this._apiUrl}/producto/editar`;
-    return this._http.put<ResponseProducto>(url, form);
+    return this._http.put<ResponseProducto>(url, producto);
   }
 
   deleteProducto(id: string) {

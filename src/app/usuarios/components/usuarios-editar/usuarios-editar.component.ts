@@ -49,14 +49,7 @@ export class UsuariosEditarComponent {
   }
 
   onSubmit() {
-    let formData = new FormData();
-
-    formData.append('data', JSON.stringify(this.usuario));
-
-    let data = formData.get('data');
-    console.log(data);
-
-   this._usuService.updateUsuario(formData).subscribe(response => {
+   this._usuService.updateUsuario(this.usuario).subscribe(response => {
      this.respuesta = response;
      console.log(this.respuesta);
      this.showToast();

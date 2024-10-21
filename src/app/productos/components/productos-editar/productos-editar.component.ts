@@ -71,7 +71,7 @@ export class ProductosEditarComponent {
     let data = formData.get('data');
     console.log(data);
 
-   this._prodService.updateProducto(formData).subscribe(response => {
+   this._prodService.updateProducto(this.producto).subscribe(response => {
      this.respuesta = response;
      console.log(this.respuesta);
      this.showToast();

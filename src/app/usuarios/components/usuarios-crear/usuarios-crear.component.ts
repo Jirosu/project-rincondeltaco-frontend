@@ -35,18 +35,9 @@ export class UsuariosCrearComponent {
   constructor(private _usuService: UsuariosService, private _sharedService: SharedService, private messageService: MessageService) {}
 
   onSubmit() {
-    let formData = new FormData();
-
-    formData.append('data', JSON.stringify(this.usuario));
-
-    let data = formData.get('data');
-    console.log(data);
-
-    this._usuService.createUsuario(formData).subscribe(response => {
+    this._usuService.createUsuario(this.usuario).subscribe(response => {
       this.respuesta = response;
-      //console.log(this.respuesta);
       this.showToast();
-      //console.log('CUATRO');
       this._sharedService.formSubmitted.next();
     });
 

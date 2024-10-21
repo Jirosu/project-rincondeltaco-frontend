@@ -76,19 +76,7 @@ export class LoginRegisterComponent implements OnInit {
     }
   }
 
-  login() : void {
-    // const user: Usuario = {
-    //   codUsu: '',
-    //   nomUsu: '',
-    //   apeUsu: '',
-    //   ...this.loginUser,
-    //   rolUsu: ''
-    // }
-
-    // let formData = new FormData();
-    // formData.append('data', JSON.stringify(user));
-    
-    // this._loginService.loginUsuarios(formData).subscribe({
+  login() : void {    
     this._loginService.loginUsuarios(this.loginUser).subscribe({
       next: (response) => {
         if (!response.valor) {
@@ -120,16 +108,12 @@ export class LoginRegisterComponent implements OnInit {
         }
       }
     });
-
   }
 
   register() : void {
     this.registerUser.rolUsu = 'Usuario';
 
-    let formData = new FormData();
-    formData.append('data', JSON.stringify(this.registerUser));
-
-    this._usuService.createUsuario(formData).subscribe({
+    this._usuService.createUsuario(this.registerUser).subscribe({
       next: (response) => {
         if (!response.valor) {
           this.respuesta = response;
@@ -154,10 +138,6 @@ export class LoginRegisterComponent implements OnInit {
   }
 
   logout() {
-    // sessionStorage.removeItem('valor');
-    // sessionStorage.removeItem('nombre');
-    // sessionStorage.removeItem('rol');
-    // sessionStorage.removeItem('id');
     sessionStorage.clear();
     this._carritoService.deleteCarrito();
 
