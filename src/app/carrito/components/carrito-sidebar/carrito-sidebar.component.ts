@@ -54,4 +54,8 @@ export class CarritoSidebarComponent {
 
   }
 
+  modalClosed(value : boolean){
+    this.modalPaymentVisible = value;
+  }
+
 }
