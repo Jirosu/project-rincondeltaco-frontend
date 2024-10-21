@@ -49,4 +49,4 @@
     </ng-template>
 </p-sidebar>
 
-<payment-modal [visible]="modalPaymentModule"></payment-modal>
+<payment-modal [visible]="modalPaymentVisible" [subTotal]="getSubtotal()" [total]="getTotal()"></payment-modal>

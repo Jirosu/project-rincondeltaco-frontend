@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { CarritoService } from '../../services/carrito.service';
 import { Producto } from '../../../productos/interfaces/producto.interface';
 import { LoginService } from '../../../login/services/login.service';
@@ -12,7 +12,7 @@ export class CarritoSidebarComponent {
   @Input()
   productos: Producto[] = [];
 
-  modalPaymentModule: boolean = true;
+  modalPaymentVisible: boolean = false;
 
   cartVisibility: boolean = false;
 
@@ -49,7 +49,7 @@ export class CarritoSidebarComponent {
   goToPagoPage() {
     if(this.validateLoginCarrito()) {
       console.log("esta logueado ir a pago");
-      this.modalPaymentModule = true;
+      this.modalPaymentVisible = true;
     }
 
   }
