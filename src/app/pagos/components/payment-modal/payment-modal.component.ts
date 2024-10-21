@@ -53,10 +53,7 @@ export class PaymentModalComponent implements OnInit{
     }
   }
 
-  generarPago() {
-    console.log(this.pedidoRequest);
-
-    
+  generarPago() {    
     this._pagosServive.generarPago(this.pedidoRequest).subscribe({
       next: () => {
         this.showPaymentSuccess();

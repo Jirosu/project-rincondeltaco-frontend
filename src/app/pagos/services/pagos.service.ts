@@ -11,7 +11,8 @@ export class PagosService {
   constructor(private _http: HttpClient) { }
 
   generarPago(pedidoRequest : PedidoRequest){
-    return this._http.post(`${this._apiUrl}/pedido/crear`, {pedidoRequest});
+    console.log( 'pedidoRequest', pedidoRequest);    
+    return this._http.post(`${this._apiUrl}/pedido/crear`, pedidoRequest);
   }
 
 }

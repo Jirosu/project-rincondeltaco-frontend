@@ -1,4 +1,4 @@
 export interface ProductoCarrito {
-    idProd: number;
+    idProduct: number;
     cantidad: number;    
   }

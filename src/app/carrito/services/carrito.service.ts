@@ -17,7 +17,7 @@ export class CarritoService {
     }
 
     addProduct(newProd: ProductoCarrito) {
-        const index = this.carrito.findIndex( (prod) => prod.idProd === newProd.idProd )  
+        const index = this.carrito.findIndex( (prod) => prod.idProduct === newProd.idProduct )  
         if(index > -1) {
             this.increaseQuantity(this.carrito[index]);
             return;
@@ -27,7 +27,7 @@ export class CarritoService {
     }
 
     increaseQuantity(prodCart: ProductoCarrito) {
-        const index = this.carrito.findIndex( (prod) => prod.idProd === prodCart.idProd )  
+        const index = this.carrito.findIndex( (prod) => prod.idProduct === prodCart.idProduct )  
         if(index > -1) {
             this.carrito[index].cantidad++;     
             this.saveCarritoStorage();        
@@ -35,7 +35,7 @@ export class CarritoService {
       }
     
     reduceQuantity(prodCart: ProductoCarrito) {
-        const index = this.carrito.findIndex( (prod) => prod.idProd === prodCart.idProd )  
+        const index = this.carrito.findIndex( (prod) => prod.idProduct === prodCart.idProduct )  
         if(index === -1) {
             return;
         }          
@@ -48,7 +48,7 @@ export class CarritoService {
 
     deleteProdCarrito(prodCart: ProductoCarrito) {
         if(this.carrito.includes(prodCart)) {
-            this.carrito = this.carrito.filter( (prod) => prod.idProd !== prodCart.idProd);
+            this.carrito = this.carrito.filter( (prod) => prod.idProduct !== prodCart.idProduct);
             this.saveCarritoStorage(); 
         }
     }

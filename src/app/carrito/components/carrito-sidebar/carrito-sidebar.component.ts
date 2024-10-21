@@ -33,7 +33,7 @@ export class CarritoSidebarComponent {
   getSubtotal() :number {
     let subtotalPedido: number = 0;
     this.carritoProductos.forEach( (prod) => {
-      subtotalPedido += prod.cantidad * this.getProductoById(prod.idProd).precProd;
+      subtotalPedido += prod.cantidad * this.getProductoById(prod.idProduct).precProd;
     });
     return subtotalPedido;
   }

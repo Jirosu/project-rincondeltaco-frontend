@@ -29,7 +29,7 @@ export class CartaContenedorProductosComponent {
 
   addProductToCart(id: number) {
     this._carritoService.addProduct({
-      idProd: id,
+      idProduct: id,
       cantidad: 1
     });
 
