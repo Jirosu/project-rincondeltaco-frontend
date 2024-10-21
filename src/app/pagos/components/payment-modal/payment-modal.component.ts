@@ -4,6 +4,7 @@ import Pedido from '../../interfaces/pedido.interface';
 import DetallePedido from '../../interfaces/detallePedido.interface';
 import PedidoRequest from '../../interfaces/pedidoRequest.interface';
 import { PagosService } from '../../services/pagos.service';
+import { CarritoService } from '../../../carrito/services/carrito.service';
 
 @Component({
   selector: 'payment-modal',
@@ -32,7 +33,20 @@ export class PaymentModalComponent implements OnInit{
   @Output()
   modalCloseEmmiter = new EventEmitter<boolean>();
 
-  constructor(private messageService: MessageService, private _pagosServive: PagosService) { }
+  get visibilityModal() {
+    this.getCarritoStorage();
+    this.getUserIdStorage();
+    return this.visible;
+  }
+
+  set visibilityModal(value: boolean) {
+    this.getCarritoStorage();
+    this.getUserIdStorage();
+    this.visible = value;
+  }
+
+  constructor(private messageService: MessageService, private _pagosServive: PagosService,
+    private _carritoService: CarritoService) { }
 
   ngOnInit(): void {
     this.getCarritoStorage();
@@ -58,6 +72,16 @@ export class PaymentModalComponent implements OnInit{
       next: () => {
         this.showPaymentSuccess();
         this.modalClose(false);
+        this._carritoService.deleteCarrito();
+        this.pedidoRequest = {
+          datosPedido: {
+            idUsuario: 0,
+            distritoEntrega: '',
+            direccionEntrega: '',
+            telefonoEntrega: ''
+          },
+          listaProductos: []
+        }
     }, error: (error) => {
         console.error(error);
     }});
