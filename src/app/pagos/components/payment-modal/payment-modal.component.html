@@ -1,4 +1,4 @@
-<p-dialog [(visible)]="visible" [modal]="true" styleClass="border-0 overflow-y-auto" header="¡Completemos tu compra!" [draggable]="false">
+<p-dialog (onHide)="visible = false" [(visible)]="visible" [modal]="true" styleClass="border-0 overflow-y-auto" header="¡Completemos tu compra!" [draggable]="false">
   <ng-template pTemplate="body">
     <div class="d-flex gap-3 justify-content-center p-3">
       <section class="form-pago">
