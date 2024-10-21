@@ -10,7 +10,7 @@ export class PagosService {
 
   constructor(private _http: HttpClient) { }
 
-  pagar(pedidoRequest : PedidoRequest){
+  generarPago(pedidoRequest : PedidoRequest){
     return this._http.post(`${this._apiUrl}/pedido/crear`, {pedidoRequest});
   }
 

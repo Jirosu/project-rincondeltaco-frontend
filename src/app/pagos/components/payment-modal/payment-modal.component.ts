@@ -3,6 +3,7 @@ import { MessageService } from 'primeng/api';
 import Pedido from '../../interfaces/pedido.interface';
 import DetallePedido from '../../interfaces/detallePedido.interface';
 import PedidoRequest from '../../interfaces/pedidoRequest.interface';
+import { PagosService } from '../../services/pagos.service';
 
 @Component({
   selector: 'payment-modal',
@@ -31,10 +32,11 @@ export class PaymentModalComponent implements OnInit{
   @Output()
   modalCloseEmmiter = new EventEmitter<boolean>();
 
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService, private _pagosServive: PagosService) { }
 
   ngOnInit(): void {
-
+    this.getCarritoStorage();
+    this.getUserIdStorage();
   }
 
   getCarritoStorage() {
@@ -44,11 +46,24 @@ export class PaymentModalComponent implements OnInit{
     }
   }
 
+  getUserIdStorage() {
+    const data = sessionStorage.getItem('id');
+    if(data) {
+      this.pedidoRequest.datosPedido.idUsuario = parseInt(data);
+    }
+  }
+
   generarPago() {
     console.log(this.pedidoRequest);
 
-    this.showPaymentSuccess();
-    this.modalClose();
+    
+    this._pagosServive.generarPago(this.pedidoRequest).subscribe({
+      next: () => {
+        this.showPaymentSuccess();
+        this.modalClose(false);
+    }, error: (error) => {
+        console.error(error);
+    }});
   }
 
   showPaymentSuccess() {
@@ -57,7 +72,7 @@ export class PaymentModalComponent implements OnInit{
     this.messageService.add({ id: count, life: 2000, key:'paymentToast', severity: 'success', summary: 'Pago Exitoso!', detail: `Muchas gracias por su compra!` });
   }
 
-  modalClose(){
-    this.modalCloseEmmiter.emit(this.visible);
+  modalClose(value: boolean){
+    this.modalCloseEmmiter.emit(value);
   }
 }
