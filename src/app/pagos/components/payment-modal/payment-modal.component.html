@@ -8,11 +8,11 @@
             <div class="cont-form cont-direccion">
               <h3>¿A donde le enviamos el pedido?</h3>
               <div class="inputs-direccion">
-                <label>Dirección <input type="text" [(ngModel)]="pedidoData.direccionEntrega" name="direccion_destinatario" id="direccion_destinatario"
+                <label>Dirección <input type="text" [(ngModel)]="pedidoRequest.datosPedido.direccionEntrega" name="direccion_destinatario" id="direccion_destinatario"
                     class="w-100 input" placeholder="Ingrese aquí su dirección" required></label>
                 <div class="cont-selects">
                   <label>Distrito
-                    <select [(ngModel)]="pedidoData.distritoEntrega" name="distrito_destinatario" id="distrito_destinatario" class="input" required>
+                    <select [(ngModel)]="pedidoRequest.datosPedido.distritoEntrega" name="distrito_destinatario" id="distrito_destinatario" class="input" required>
                       <option value disabled selected>-- Seleccione aquí --</option>
                       <option value="Cercado de Lima">Cercado de Lima</option>
                       <option value="San Miguel">San Miguel</option>
@@ -33,7 +33,7 @@
                       class="input label-contacto-nomape" placeholder="Ingrese aquí los nombre!" required></label>
                   <label>Apellido <input type="text" name="apellido_destinatario" id="apellido_destinatario"
                       class="input label-contacto-nomape" placeholder="Ingrese aquí los apellidos!" required></label>
-                  <label>Telefono <input type="text" [(ngModel)]="pedidoData.telefonoEntrega" name="telefono_destinatario" id="telefono_destinatario"
+                  <label>Telefono <input type="text" [(ngModel)]="pedidoRequest.datosPedido.telefonoEntrega" name="telefono_destinatario" id="telefono_destinatario"
                       class="input label-contacto-tel" placeholder="999999999" maxlength="9" required></label>
                 </div>
               </div>

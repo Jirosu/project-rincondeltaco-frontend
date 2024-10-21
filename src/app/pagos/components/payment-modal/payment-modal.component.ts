@@ -1,21 +1,25 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import Pedido from '../../interfaces/pedido.interface';
 import DetallePedido from '../../interfaces/detallePedido.interface';
+import PedidoRequest from '../../interfaces/pedidoRequest.interface';
 
 @Component({
   selector: 'payment-modal',
   templateUrl: './payment-modal.component.html',
   styleUrl: './payment-modal.component.css'
 })
-export class PaymentModalComponent{
-  pedidoData: Pedido = {
-    idUsuario: 0,
-    direccionEntrega: '',
-    distritoEntrega: '',
-    telefonoEntrega: '',
-  };
-  carrito: DetallePedido[] = [];
+export class PaymentModalComponent {
+
+  pedidoRequest: PedidoRequest ={
+    datosPedido: {
+      idUsuario: 0,
+      distritoEntrega: '',
+      direccionEntrega: '',
+      telefonoEntrega: ''
+    },
+    listaProductos: this.getCarritoStorage()
+  }
 
   @Input()
   visible: boolean = false;
@@ -32,13 +36,12 @@ export class PaymentModalComponent{
   getCarritoStorage() {
     const data = sessionStorage.getItem('pedido');
     if(data) {
-        this.carrito = JSON.parse(data);
+      return JSON.parse(data);
     }
   }
 
   generarPago() {
-    console.log('Pedido:', this.pedidoData);
-    console.log('Carrito:', this.carrito);
+    console.log(this.pedidoRequest);
 
     this.showPaymentSuccess();
     this.modalClose();
