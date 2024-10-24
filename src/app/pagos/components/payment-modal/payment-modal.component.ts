@@ -20,6 +20,11 @@ export class PaymentModalComponent implements OnInit{
       direccionEntrega: '',
       telefonoEntrega: ''
     },
+    datosVoucher: {
+      document_type_Cli: '',
+      num_document_Cli: '',
+      voucher_type: ''
+    },
     listaProductos: []
   }
 
@@ -67,7 +72,7 @@ export class PaymentModalComponent implements OnInit{
     }
   }
 
-  generarPago() {    
+  generarPago() {     
     this._pagosServive.generarPago(this.pedidoRequest).subscribe({
       next: () => {
         this.showPaymentSuccess();
@@ -79,6 +84,11 @@ export class PaymentModalComponent implements OnInit{
             distritoEntrega: '',
             direccionEntrega: '',
             telefonoEntrega: ''
+          },
+          datosVoucher: {
+            document_type_Cli: '',
+            num_document_Cli: '',
+            voucher_type: ''
           },
           listaProductos: []
         }

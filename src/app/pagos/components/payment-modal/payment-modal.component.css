@@ -244,6 +244,10 @@ select {
   justify-content: space-between;
 }
 
+.label-num-doc {
+  width: 60%;
+}
+
 h3 {
   width: 100%;
   margin-bottom: 15px;
@@ -270,6 +274,10 @@ label {
 .inputs-contacto {
   display: flex;
   column-gap: 5px;
+}
+
+.inputs-comprobante {
+
 }
 
 .cont-direccion input,
