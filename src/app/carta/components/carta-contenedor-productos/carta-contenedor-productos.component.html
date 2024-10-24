@@ -7,8 +7,7 @@
       <div *ngFor="let prod of getProductosByCategoria(cat.descCatProd)" class="info-comida">
         <img [src]="prod.rutaImg" [alt]="prod.nomProd" class="food-img">
         <h3 class="food-name nom-prod text-center">{{ prod.nomProd }}</h3>
-        <p class="desc-prod text-center text-break">{{ prod.descProd }}</p>
-        <p class="food-price prec-prod fw-bold">{{ prod.precProd | currency: 'S/ ' }}</p>
+        <p class="desc-prod text-center text-break">{{ prod.descProd }}</p>        
         <div class="food-details">
           <h4 class="food-price" >{{ prod.precProd | currency: 'S/ ' }}</h4>
           <button class="food-button" (click)="addProductToCart(prod.codProd)">Añadir <i class="fa-solid fa-cart-shopping"></i></button>
